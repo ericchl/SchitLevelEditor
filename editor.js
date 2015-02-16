@@ -1,4 +1,4 @@
-var width = 10000, 
+var width = 1000, 
 	height = 10000,
 	c = document.getElementById('c'), 
 	ctx = c.getContext('2d');
@@ -8,12 +8,19 @@ var width = 10000,
 var platformImage = new Image();
 	platformImage.src = "img/Platform.png"; 
 
+var playerImage = new Image();
+	playerImage.src = "img/GameCharacter_Stand250.png"
+
+
+
 // var that = this;
 
 displayBackground = function() {
 	// ctx.fillRect(0,0,width,height);
 	ctx.drawImage(platformImage, 0, 630, 150, 1500, 0, 0, width, height);
-	ctx.fillText("Hello World", 10,10);
+	ctx.drawImage(playerImage, 0, 0, 1000, 1000, 0, height-60, 60, 60);
+
+	// ctx.fillText("Hello World", 10,10);
 };
 
 var platformVector = [];
