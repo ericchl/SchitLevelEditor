@@ -31,7 +31,8 @@ drawPlatform = function(xLeft, yTop, xRight, yBottom){
 	console.log("xLeft: " + xLeft + ", yTop: " + yTop);
 	console.log("xRight: " + xRight + ", yBottom: " + yBottom);
 	var platform_width = xRight - xLeft,
-		platform_height = yBottom - yTop;
+		// platform_height = yBottom - yTop;
+		platform_height = 12;
 
 	ctx.drawImage(platformImage, 0, 0, 140, 200, xLeft-4, yTop, 20, platform_height*2);
 	ctx.drawImage(platformImage, 0, 420, 140, 200, xLeft+platform_width -4 , yTop, 20, platform_height*2);
@@ -40,25 +41,20 @@ drawPlatform = function(xLeft, yTop, xRight, yBottom){
 	platformVector[platformCounter] = {x: xLeft, y: yTop, width: platform_width, height: platform_height};
 	platformCounter++;
 
-	if (platformCounter == 10) {
-		serializePlatforms();
-	}
+	// if (platformCounter == 10) {
+	// 	serializePlatforms();
+	// }
 }
 
 serializePlatforms = function() {
 	var jsonStr = JSON.stringify(platformVector);
 	console.log(jsonStr);
 
-	var fs = require('fs');
-	fs.writeFile("platform", jsonStr, function(e) {
-		if (e) {
-			console.log(e);
-		}
-		else {
-			console.log("The file was saved!");
-		}
-	});
-	
+	// var fs = require(['fs'], function(fs) {
+	// 	fs.writeFile("platforms.txt", jsonStr, function(err) {
+
+	// 	});
+	// });
 }
 
 if(platformImage.complete) { //check if image was already loaded by the browser
@@ -90,7 +86,7 @@ $(document).ready(function() {
 });
 
 document.getElementById("doneButton").onclick = function() {
-	console.log("DONE CLICKED - SERIALIZE PLATFORMS");
+	alert("DONE CLICKED - SERIALIZING PLATFORMS");
 	serializePlatforms();
 };
 
