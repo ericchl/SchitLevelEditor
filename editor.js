@@ -72,6 +72,7 @@ $(document).ready(function() {
 });
 
 document.getElementById("clickMe").onclick = function() {
+	console.log("DONE CLICKED - SERIALIZE PLATFORMS");
 	serializePlatforms();
 };
 
