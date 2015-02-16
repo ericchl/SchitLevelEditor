@@ -26,9 +26,22 @@ if(platformImage.complete) { //check if image was already loaded by the browser
 }
 
 $(document).ready(function() {
-  $(c).on('click', function(e) {
-  	console.log("ENTER CLICK");
-  });
+	// var rect = canvas.getBoundingClientRect();
+	var x1, x2, y1, y2;
+
+	$(c).on('mousedown', function(e) {
+		console.log("mouse down");
+		x1 = e.pageX - $(c).offset().left;
+		y1 = e.pageY - $(c).offset().top;
+		console.log("x1: " + x1 + ", y1: " + y1);
+	});
+
+	$(c).on('mouseup', function(e) {
+		console.log("mouse up");
+		x2 = e.pageX - $(c).offset().left;
+		y2 = e.pageY - $(c).offset().top;
+		console.log("x2: " + x2 + ", y2: " + y2);
+	});
 
 });
 
