@@ -15,6 +15,10 @@ displayBackground = function() {
 	ctx.fillText("Hello World", 10,10);
 };
 
+drawPlatform = function(xLeft, yTop, xRight, yBottom){
+
+}
+
 if(platformImage.complete) { //check if image was already loaded by the browser
    displayBackground();
 }else {
@@ -22,10 +26,9 @@ if(platformImage.complete) { //check if image was already loaded by the browser
 }
 
 $(document).ready(function() {
-  $('platformImage').click(function(e) {
-    var offset = $(this).offset();
-    alert(e.clientX - offset.left);
-    alert(e.clientY - offset.top);
+  $(c).on('click', function(e) {
+  	console.log("ENTER CLICK");
   });
+
 });
 
