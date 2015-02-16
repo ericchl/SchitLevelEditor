@@ -16,6 +16,9 @@ displayBackground = function() {
 	ctx.fillText("Hello World", 10,10);
 };
 
+var platformVector = [];
+var platformCounter = 0;
+
 drawPlatform = function(xLeft, yTop, xRight, yBottom){
 	console.log("draw platform");
 	console.log("xLeft: " + xLeft + ", yTop: " + yTop);
@@ -23,12 +26,21 @@ drawPlatform = function(xLeft, yTop, xRight, yBottom){
 	var platform_width = xRight - xLeft,
 		platform_height = yBottom - yTop;
 
-
 	ctx.drawImage(platformImage, 0, 0, 140, 200, xLeft-4, yTop, 20, platform_height*2);
 	ctx.drawImage(platformImage, 0, 420, 140, 200, xLeft+platform_width -4 , yTop, 20, platform_height*2);
 	ctx.drawImage(platformImage, 0, 210, 20, 200, xLeft, yTop, platform_width, platform_height*2);
 
+	platformVector[platformCounter] = {x: xLeft, y: yTop, width: platform_width, height: platform_height};
+	platformCounter++;
 
+	if (platformCounter == 10) {
+		serializePlatforms();
+	}
+}
+
+serializePlatforms = function() {
+	var jsonStr = JSON.stringify(platformVector);
+	console.log(jsonStr);
 }
 
 if(platformImage.complete) { //check if image was already loaded by the browser
@@ -55,7 +67,6 @@ $(document).ready(function() {
 		console.log("x2: " + x2 + ", y2: " + y2);
 
 		drawPlatform(x1, y1, x2, y2);
-
 	});
 
 });
