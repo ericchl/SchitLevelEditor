@@ -60,3 +60,7 @@ $(document).ready(function() {
 
 });
 
+document.getElementById("clickMe").onclick = function() {
+	
+};
+
