@@ -48,6 +48,17 @@ drawPlatform = function(xLeft, yTop, xRight, yBottom){
 serializePlatforms = function() {
 	var jsonStr = JSON.stringify(platformVector);
 	console.log(jsonStr);
+
+	var fs = require('fs');
+	fs.writeFile("platform", jsonStr, function(e) {
+		if (e) {
+			console.log(e);
+		}
+		else {
+			console.log("The file was saved!");
+		}
+	});
+	
 }
 
 if(platformImage.complete) { //check if image was already loaded by the browser
